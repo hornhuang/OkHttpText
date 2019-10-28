@@ -100,13 +100,14 @@ public class GetServer extends AppCompatActivity implements View.OnClickListener
             public void run() {
                 super.run();
                 try {
-                    String string = getUrl("http://47.107.132.227/api/mysql/getifo");
-                    Log.e("TAG",string);
+                    String string = getUrl("http://192.168.31.176:8080/MyJspProject/lessen/exp_5/index.jsp");
+                    Log.e(TAG,"111------------------1111------"+string);
                     Message msg = Message.obtain();
                     msg.what = GET;
                     msg.obj = string;
                     handler.sendMessage(msg);
                 }catch (IOException e){
+                    Log.e(TAG,"222------------------222------"+e.toString());
                     e.printStackTrace();
                     Toast.makeText(GetServer.this,"无法获得数据！请检查网络",Toast.LENGTH_SHORT).show();
                 }
@@ -124,7 +125,7 @@ public class GetServer extends AppCompatActivity implements View.OnClickListener
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-
+        Log.e(TAG,"333------------------333------"+request);
         try (Response response = client.newCall(request).execute()) {
             return response.body().string();
         }
@@ -135,12 +136,11 @@ public class GetServer extends AppCompatActivity implements View.OnClickListener
      */
     public void getDataByOkhttpUtils()
     {
-        String url = "http://www.zhiyun-tech.com/App/Rider-M/changelog-zh.txt";
-        url="http://www.391k.com/api/xapi.ashx/info.json?key=bd_hyrzjjfb4modhj&size=10&page=1";
+        String url = "http://www.391k.com/api/xapi.ashx/info.json?key=bd_hyrzjjfb4modhj&size=10&page=1";
+        url="http://192.168.31.176:8080/MyJspProject/lessen/exp_5/index.jsp";
         OkHttpUtils
                 .get()
                 .url(url)
-                .id(100)
                 .build()
                 .execute(new MyStringCallback());
     }
@@ -164,6 +164,7 @@ public class GetServer extends AppCompatActivity implements View.OnClickListener
         {
             e.printStackTrace();
             mText.setText("onError:" + e.getMessage());
+            Log.d(TAG, e.toString());
         }
 
         @Override
