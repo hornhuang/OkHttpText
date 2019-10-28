@@ -137,7 +137,7 @@ public class GetServer extends AppCompatActivity implements View.OnClickListener
     public void getDataByOkhttpUtils()
     {
         String url = "http://www.391k.com/api/xapi.ashx/info.json?key=bd_hyrzjjfb4modhj&size=10&page=1";
-        url="http://192.168.31.176:8080/MyJspProject/lessen/exp_5/index.jsp";
+        url="http://47.107.132.227/";
         OkHttpUtils
                 .get()
                 .url(url)
